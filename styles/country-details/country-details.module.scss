@@ -1,0 +1,25 @@
+.countryInfoContainer {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.countryTitle {
+    font-size: 28px !important;
+    font-weight: bold;
+}
+
+.listInfo {
+    list-style-type: none;
+    padding: 0;
+}
+
+.listInfo li {
+    line-height: 1.7em;
+}
+
+.listInfoContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+}
