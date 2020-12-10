@@ -13,7 +13,6 @@ type CountryDetailsProps = {
 };
 
 const CountryDetails: NextPage<CountryDetailsProps> = ({ country }) => {
-    console.log("client side: " + country)
     if (country !== null)
     return (
         <BaseLayout>
@@ -99,12 +98,10 @@ const CountryDetails: NextPage<CountryDetailsProps> = ({ country }) => {
         )
 };
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    console.log("server side axios: " + context.query.name?.length);
   try {
     let res = await axios.get(
       "/name/" + context.query.name + "?fullText=true"
     );
-    console.log(res);
     return {
       props: {
         country: res.data[0],

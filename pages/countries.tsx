@@ -31,7 +31,6 @@ export default function Countries({ countries }: CountriesProps) {
     const res = await axios.get(
         `/region/${region}`
       );
-      console.log(res.data);
       setCountryItems(
         res.data?.map((country: Country) => {
           return <CountryItem key={country.name} country={country} />;
@@ -40,7 +39,6 @@ export default function Countries({ countries }: CountriesProps) {
   }
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    console.log("region: " + event.target.value);
     setRegion(event.target.value as string);
     getCountriesByRegion(event.target.value as string);
   };
@@ -49,7 +47,6 @@ export default function Countries({ countries }: CountriesProps) {
     const res = await axios.get(
       `/name/${name}`
     );
-    console.log(res.data);
     setCountryItems(
       res.data?.map((country: Country) => {
         return <CountryItem key={country.name} country={country} />;
@@ -60,13 +57,11 @@ export default function Countries({ countries }: CountriesProps) {
   const handleSearchCountry = async (
     event: React.ChangeEvent<{ value: unknown }>
   ) => {
-    console.log("searchCountryName: " + event.target.value);
     setCountryName(event.target.value as string);
     if (countryName !== "" && countryName.length >= 1)
       getCountriesByName(countryName);
     else {
       let res = await getInitialData();
-      console.log(res);
       setCountryItems(
         res.props.countries?.map((country : Country) => {
           return <CountryItem key={country.name} country={country} />;
